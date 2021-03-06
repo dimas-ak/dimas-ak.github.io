@@ -1,0 +1,665 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>MY Datatables</title>
+    <link rel="stylesheet" href="arjunane.min.css">
+    <link rel="stylesheet" href="Scripts/datatables.css?2">
+</head>
+<body>
+    <div class="p-x">
+        <div class="col-mx center">
+            <h1>-=[ MY Datatables.js DEMO ]=-</h1>
+            <div class="col-mx">
+                <span>Dependency-free JavaScript library Arjunane Datatables</span>
+            </div>
+        </div>
+        <div class="col-mx">
+            <strong>Required:</strong>
+            <ul>
+                <li>jQuery.js</li>
+                <li>datatables.css</li>
+                <li>datatables.js</li>
+            </ul>
+        </div>
+
+        <div class="col-mx">
+            <strong>List Tutorials</strong>
+            <ul>
+                <li><a href="#simple-init">Simple Init</a></li>
+                <li><a href="#hide-index">Hide Index & Order By</a></li>
+                <li><a href="#search">Search</a></li>
+                <li><a href="#arrayinfo">Array Info</a></li>
+                <li><a href="#buttonsclass">Buttons Class</a></li>
+                <li><a href="#actions">Action(s)</a></li>
+                <li><a href="#checkableactions">Checkable Action(s)</a></li>
+            </ul>
+        </div>
+
+
+        <div id="simple-init" class="col-mx">
+            <h1>Tutorials : 1. Simple Init</h1>
+            <div class="col-mx">
+                <span>Simple init</span>
+            </div>
+            <div class="col-mx bg-w2 p-x">
+                <pre>
+url : "https://your-url",
+
+or you if you have a json file
+
+json : "https://json-file.json"
+
+<hr>
+$('#dt-1').table({
+    //url : "Scripts/",
+    json: "Scripts/json.json",
+    thead: ["ID", "Name", "Grade", "Gender", "Birth", "Place"],
+});
+<button class="btn blue p-v" id="p-1">PREVIEW</button>
+                </pre>
+            </div>
+        </div>
+
+        <div id="hide-index" class="col-mx">
+            <h1>Tutorials : 2. Hidden Index and Order By</h1>
+            <div class="col-mx">
+                <ul>
+                    <li>index_hidden : [<strong>array...int</strong>] </li>
+                    <li>order_by : [<strong>int (index)</strong>, <strong>"desc"</strong> OR <strong>"asc"</strong>] </li>
+                </ul>
+            </div>
+            <div class="col-mx">
+                <span>Let's say that you have 6 <strong>th</strong> for thead</span> ["ID", "Name", "Grade", "Gender", "Birth", "Place"] or 6 array of data and you want to hide for certain index, so<br>
+
+                <ul>
+                    <li>ID : 0</li>
+                    <li>Name : 1</li>
+                    <li>Grade : 2</li>
+                    <li>Status : 3</li>
+                    <li>Gender : 4</li>
+                    <li>Birth : 5</li>
+                    <li>Place : 6</li>
+                </ul>
+
+                Just set where you want to hide the index of data.
+                <div class="col-mx">
+                    <span>For example, below is to hidden the index of number <strong>0</strong> and then the index of <strong>0</strong> will be hide (the data is still exist)</span><br>
+                    <span>Or if you want to hidden some index, then <strong>hidden_index : [0,1,2] </strong></span>
+                </div>
+                <div class="col-mx">
+                    <strong>But, the index where you already set to hidden, still can be access for parameters</strong>
+                </div>
+                <div class="col-mx">
+                    <strong>Order By:</strong>
+                    <div class="col-mx">
+                        <span>Set where you want to "<strong>Order By</strong>" first when you firstly load the data, for example <strong>order_by : [2, "desc"]</strong> where the index of 2 is <strong>"Grade"</strong></span>
+                    </div>
+                </div>
+            </div>
+            <div class="col-mx bg-w2 p-x">
+                <pre>
+$('#dt-1').table({
+    json: "Scripts/json.json",
+    thead: ["ID", "Name", "Grade", "Gender", "Birth", "Place"],
+    <strong>hide_index: [0]</strong> // <i>You can hide multiple index <strong>[0,1,2]</strong></i>
+    <strong>order_by: [2, "desc"]</strong>
+});
+<button class="btn blue p-v" id="p-2">PREVIEW</button>
+                </pre>
+            </div>
+        </div>
+
+        <div id="search" class="col-mx">
+            <h1>Tutorials : 3. Search</h1>
+            <div class="col-mx">
+                <ul>
+                    <li>search : 
+                        <ul>
+                            <li>index</li>
+                            <li>type : STRING ("input" <strong>OR</strong> "select")</li>
+                            <li>placeholder : STRING (for <strong>"input"</strong> type)</li>
+                            <li>value : ARRAY => STRING, STRING (for <strong>"select"</strong> type)</li>
+                            <li>group_by : (for <strong>"select"</strong> type)
+                                <ul>
+                                    <li>key : INT</li>
+                                    <li>value : INT</li>
+                                    <li>default: ARRAY => STRING, STRING</li>
+                                </ul>
+                            </li>
+                        </ul>
+                    </li>
+                </ul>
+            </div>
+            <div class="col-mx">
+                <span>Index start from zero (<strong>0</strong>) even if you hide the index of 0</span>
+            </div>
+            <div class="col-mx bg-w2 p-x">
+                <pre>
+search : 
+[
+    { index: 0, type: "input", placeholder: "Search ID..."}, // <i>If you hide this index, this is will not show at all.</i>
+    { index: 1, type: "input", placeholder: "Search Name..."},
+    { index: 2, type: "input", placeholder: "Search Grade..."},
+    { index: 3, type: "select", value: [
+                                    ["", "All"], 
+                                    [1, "Pass"],
+                                    [0, "Not Pass"],
+                                ]
+    }
+]
+<button class="btn blue p-v" id="p-3">PREVIEW</button>
+/*
+<i>group_by <strong>Example</strong> :</i>
+<i>Let's say, you have some data</i>
+*/
+Code | Country
+  1  | Kajen
+  2  | Bojong
+  2  | Bojong
+  3  | Wiradesa
+  4  | Karanganyar
+
+search : 
+[
+    index       : 1, 
+    type        : "select", 
+    group_by    : 
+    { 
+        key : 0, 
+        value : 1, 
+        default : ["", "All"] 
+    }
+]
+
+// <i><strong>Output Search:</strong></i>
+< option value="">All< /option>
+< option value="1">Kajen< /option>
+< option value="2">Bojong< /option>
+< option value="3">Wiradesa< /option>
+< option value="4">Karanganyar< /option>
+
+// <i><strong>OR</strong></i>
+
+search : 
+[
+    index       : 1, 
+    type        : "select", 
+    group_by    : 
+    { 
+        key : 1, 
+        value : 1, 
+        default : ["", "All"] 
+    }
+]
+
+// <i><strong>Output Search:</strong></i>
+< option value="">All< /option>
+< option value="Kajen">Kajen< /option>
+< option value="Bojong">Bojong< /option>
+< option value="Wiradesa">Wiradesa< /option>
+< option value="Karanganyar">Karanganyar< /option></pre> 
+            </div>
+        </div>
+
+        <div id="arrayinfo" class="col-mx">
+            <h1>Tutorials : 4. Array Info</h1>
+            <div class="col-mx">
+                <ul>
+                    <li>array_info :</li>
+                    <ul>
+                        <li>index : INT</li>
+                        <li>value : ARRAY => STRING, STRING</li>
+                    </ul>
+                </ul>
+            </div>
+            <div class="col-mx bg-w2 p-x">
+                <pre>
+array_info: [
+    { index: 3, value: { 
+            "0" : '< span style="color:red">Not Pass</ span>',
+            "1" : '< span style="color:green">Pass</ span>'
+        }
+    }
+]
+<button class="btn blue p-v" id="p-4">PREVIEW</button></pre>
+            </div>
+        </div>
+        
+        <div id="buttonsclass" class="col-mx">
+            <h1>Tutorials : 5. Buttons Class</h1>
+            <div class="col-mx">
+                <span>Class (cls) :</span>
+                <ul>
+                    <li>add</li>
+                    <li>edit</li>
+                    <li>download</li>
+                    <li>search</li>
+                    <li>change</li>
+                    <li>message</li>
+                    <li>reject</li>
+                    <li>accept</li>
+                    <li>detail</li>
+                </ul>
+            </div>
+        </div>
+
+        <div id="actions" class="col-mx">
+            <h1>Tutorials : 6. Action(s)</h1>
+            <div class="col-mx">
+                <ul>
+                    <li>action :</li>
+                    <ul>
+                        <li>cls         : STRING</li>
+                        <li>url         : STRING</li>
+                        <li>params      : ARRAY => INT</li>
+                        <li>text        : STRING</li>
+                        <li>isRemove    : BOOLEAN (remove data/tr)</li>
+                        <li>params      : ARRAY => INT</li>
+                        <li>field       : INT (for {i} message)</li>
+                        <li>msg         : STRING 
+                            <ul>
+                                <li>{i} : index from <strong>field</strong> (thead text)</li>
+                                <li>{m} : index from <strong>td</strong></li>
+                            </ul>
+                        </li>
+                        <li>changeData  : Object
+                            <ul>
+                                <li>changeIndex : ARRAY => INT (index of <strong>td</strong>)</li>
+                            </ul>
+                        </li>
+                    </ul>
+                </ul>
+            </div>
+            <div class="col-mx bg-w2 p-x">
+                <pre>
+action :
+[
+    {   
+        cls     : "edit",
+        url     : "edit/",
+        text    : "_edit_",
+        params  : [0, 1]
+    },
+    {
+        cls     : "delete",
+        url     : "Scripts/delete.php",
+        text    : "_hapus_",
+        isRemove: true,
+        params  : [0],
+        field   : 0,
+        msg     : "Do you really want to delete this {i} : {m}?"
+    },
+    {
+        cls     : "change",
+        url     : "Scripts/change.php",
+        text    : "_change_",
+        params  : [0],
+        changeData: 
+        {
+            changeIndex : [1, 2] // merubah data text pada index td
+        }
+    }
+]
+
+/*
+<i>
+    <h3>Change</h3>
+    Let's say, you have <strong>change.php</strong> and then the output is:
+    $json = [ "My Name 7", 90];
+    echo json_encode($json);
+    Then, <strong>td</strong> for <strong>Name</strong> and <strong>Grade</strong> will be changed (including if you have <strong>array_info</strong> on it).
+    <h3>Delete</h3>
+    Let's say, you have <strong>delete.php</strong> and then the output is:
+    $json["result"] = true;
+    echo json_encode($json);
+    Then, <strong>tr</strong> and the data will be removed.
+    <strong>NOTE</strong> : That the <strong>"result"</strong> of json( whatever is <strong>false</strong> or <strong>true</strong>), it will true except it have an error from the server
+    <h3>NOTE</h3>
+    - That my script can't modify for your json file (Except you have backend to changing it).
+    - You need to run XAMPP or WAMPP, etc. Because delete.php and change.php need <strong>PhpMyAdmin</strong>
+</i>
+*/
+<button class="btn blue p-v" id="p-6">PREVIEW</button></pre>
+            </div>
+        </div>
+
+        <div id="checkableactions" class="col-mx">
+            <h1>Tutorials : 7.Checkable Action(s)</h1>
+            <div class="col-mx">
+                <ul>
+                    <li>checkable : BOOLEAN (<strong>required*</strong>)</li>
+                    <li>checkable_action :</li>
+                    <ul>
+                        <li>cls         : STRING</li>
+                        <li>url         : STRING</li>
+                        <li>params      : ARRAY => INT</li>
+                        <li>text        : STRING</li>
+                        <li>isRemove    : BOOLEAN (remove data/tr)</li>
+                        <li>params      : ARRAY => INT</li>
+                        <li>field       : INT (for {i} message)</li>
+                        <li>msg         : STRING 
+                            <ul>
+                                <li>{i} : index from <strong>field</strong> (thead text)</li>
+                                <li>{m} : index from <strong>td</strong></li>
+                            </ul>
+                        </li>
+                        <li>changeData  : Object
+                            <ul>
+                                <li>changeIndex : ARRAY => INT (index of <strong>td</strong>)</li>
+                            </ul>
+                        </li>
+                    </ul>
+                </ul>
+            </div>
+            <div class="col-mx bg-w2 p-x">
+                <pre>
+checkable: true,
+action_checkable: 
+[
+    {
+        cls     : "add",
+        url     : "add/",
+        text    : "TAMBAH BERITA",
+    },
+    {
+        cls     : "delete",
+        url     : "Scripts/delete.php",
+        text    : "HAPUS",
+        params  : [0],
+        isRemove: true,
+        field   : 0,
+        msg     : "Do you really want to delete all of these?",
+        col_msg : "{i} = {m}"
+    },
+    {
+        cls     : "change",
+        url     : "Scripts/change.php",
+        text    : "-CHANGE-",
+        params  : [0],
+        field   : 0,
+        changeData: 
+        {
+            changeIndex : [1, 2] // merubah data text pada index td
+        },
+        msg     : "Do you really want to change all of these?",
+        col_msg : "{i} = {m}"
+    }
+]
+
+/*
+<i>
+    <h3>Change</h3>
+    Let's say, you have <strong>change.php</strong> and then the output is:
+    $json = [ "My Name 7", 90];
+    echo json_encode($json);
+    Then, all of <strong>td</strong> for <strong>Name</strong> and <strong>Grade</strong> (which are checked )will be changed (including if you have <strong>array_info</strong> on it).
+    <strong>NOTE</strong> : All <strong>td</strong> will be changed into <strong>My Name 7</strong> and <strong>90</strong>.
+    <h3>Delete</h3>
+    Let's say, you have <strong>delete.php</strong> and then the output is:
+    $json["result"] = true;
+    echo json_encode($json);
+    Then, all of <strong>tr</strong> and the data (which are checked) will be removed.
+    <strong>NOTE</strong> : That the <strong>"result"</strong> of json( whatever is <strong>false</strong> or <strong>true</strong>), it will true except it have an error from the server.
+    <h3>NOTE</h3>
+    - That my script can't modify for your json file (Except you have backend to changing it).
+    - You need to run XAMPP or WAMPP, etc. Because delete.php and change.php need <strong>PhpMyAdmin</strong>
+</i>
+*/
+<button class="btn blue p-v" id="p-7">PREVIEW</button></pre>
+            </div>
+        </div>
+        <div class="col-mx m-t-10">
+            <h1>Output :</h1>
+            <div class="col-mx">
+                <strong id="title-preview"></strong>
+            </div>
+            <div id="dt-1"></div>
+        </div>
+
+    </div>
+    <div id="data-tables"></div>
+    <script src="Scripts/jquery.js"></script>
+    <script src="Scripts/datatables.js?16"></script>
+    <script>
+        var dt      = $("#dt-1"),
+            title   = $("#title-preview");
+
+        dt.table({
+            //url : "Scripts/",
+            json: "Scripts/json.json",
+            thead: ["ID", "Name", "Grade", "Status", "Gender", "Birth", "Place"],
+        });
+        title.html("Tutorials : 1. Simple Init");
+
+        $("#p-1").on("click", function () {
+
+            dt.table({
+                json: "Scripts/json.json",
+                thead: ["ID", "Name", "Grade", "Status", "Gender", "Birth", "Place"],
+            });
+            title.html("Tutorials : 1. Simple Init");
+            dt.focus();
+        });
+
+        $("#p-2").on("click", function () {
+
+            dt.table({
+                json: "Scripts/json.json",
+                thead: ["ID", "Name", "Grade", "Status", "Gender", "Birth", "Place"],
+                hide_index: [0],
+                order_by: [2, "desc"]
+            });
+            title.html("Tutorials : 2. Hidden Index and Order By");
+            dt.focus();
+        });
+
+        $("#p-3").on("click", function () {
+
+            dt.table({
+                json: "Scripts/json.json",
+                thead: ["ID", "Name", "Grade", "Status", "Gender", "Birth", "Place"],
+                search : 
+                [
+                    { index: 0, type: "input", placeholder: "Search ID..."}, // <i>If you hide this index, this is will not show at all.</i>
+                    { index: 1, type: "input", placeholder: "Search Name..."},
+                    { index: 2, type: "input", placeholder: "Search Grade..."},
+                    { index: 3, type: "select", value: [
+                                                    ["", "All"], 
+                                                    ["1", "Pass"],
+                                                    ["0", "Not Pass"],
+                                                ]
+                    }
+                ]
+            });
+            title.html("Tutorials : 3. Search");
+            dt.focus();
+        });
+
+        $("#p-4").on("click", function () {
+
+            dt.table({
+                json: "Scripts/json.json",
+                thead: ["ID", "Name", "Grade", "Status", "Gender", "Birth", "Place"],
+                array_info: [
+                    { index: 3, value: { 
+                            "0" : '<span style="color:red">Not Pass</span>',
+                            "1" : '<span style="color:green">Pass</span>'
+                        }
+                    }
+                ]
+            });
+            title.html("Tutorials : 4. Array Info");
+            dt.focus();
+        });
+        
+        $("#p-6").on("click", function () {
+
+            dt.table({
+                json: "Scripts/json.json",
+                thead: ["ID", "Name", "Grade", "Status", "Gender", "Birth", "Place"],
+                action :
+                [
+                    {   
+                        cls     : "edit",
+                        url     : "edit/",
+                        text    : "_edit_",
+                        params  : [0, 2]
+                    },
+                    {
+                        cls     : "delete",
+                        url     : "Scripts/delete",
+                        text    : "_hapus_",
+                        isRemove: true,
+                        params  : [0],
+                        field   : 0,
+                        msg     : "Do you really want to delete this {i} : {m}?"
+                    },
+                    {
+                        cls     : "change",
+                        url     : "Scripts/change",
+                        text    : "_change_",
+                        params  : [0],
+                        changeData: 
+                        {
+                            changeIndex : [1, 2] // merubah data text pada index td
+                        }
+                    }
+                ]
+            });
+            title.html("Tutorials : 6. Actions");
+            dt.focus();
+        });
+
+        
+        $("#p-7").on("click", function () {
+
+            dt.table({
+                json: "Scripts/json.json",
+                thead: ["ID", "Name", "Grade", "Status", "Gender", "Birth", "Place"],
+                checkable: true,
+                action_checkable: 
+                [
+                    {
+                        cls     : "add",
+                        url     : "add/",
+                        text    : "TAMBAH BERITA",
+                    },
+                    {
+                        cls     : "delete",
+                        url     : "Scripts/delete.php",
+                        text    : "HAPUS",
+                        params  : [0],
+                        isRemove: true,
+                        field   : 0,
+                        msg     : "Do you really want to delete all of these?",
+                        col_msg : "{i} = {m}"
+                    },
+                    {
+                        cls     : "change",
+                        url     : "Scripts/change.php",
+                        text    : "-CHANGE-",
+                        params  : [0],
+                        field   : 0,
+                        changeData: 
+                        {
+                            changeIndex : [1, 2] // merubah data text pada index td
+                        },
+                        msg     : "Do you really want to change all of these?",
+                        col_msg : "{i} = {m}"
+                    }
+                ]
+            });
+            title.html("Tutorials : 7. Checkable Actions");
+            dt.focus();
+        });
+        /*
+        $('#data-tables').table({
+            //url : "Scripts/",
+            json: "Scripts/json.json",
+            thead: ["ID", "Name", "Grade", "Gender", "Birth", "Place"],
+            checkable: true,
+            //hidden_index: [0],
+            action_checkable: 
+            [
+                {
+                    cls     : "add",
+                    url     : "add/",
+                    text    : "TAMBAH BERITA",
+                    params  : [0],
+                    isRemove: true,
+                    field   : 0,
+                    msg     : "Do you really want to delete all of these?",
+                    col_msg : "{i} = {m}"
+                },
+                {
+                    cls     : "delete",
+                    url     : "Scripts/delete.php",
+                    text    : "HAPUS",
+                    params  : [0],
+                    isRemove: true,
+                    field   : 0,
+                    msg     : "Do you really want to delete all of these?",
+                    col_msg : "{i} = {m}"
+                },
+                {
+                    cls     : "change",
+                    url     : "Scripts/change.php",
+                    text    : "-CHANGE-",
+                    params  : [0],
+                    field   : 0,
+                    changeData: 
+                    {
+                        changeIndex : [1, 2] // merubah data text pada index td
+                    },
+                    msg     : "Do you really want to change all of these?",
+                    col_msg : "{i} = {m}"
+                }
+            ],
+            search: [
+                { index: 0, type: "input", placeholder: "Search ID..."},
+                { index: 1, type: "input", placeholder: "Search Name..."},
+                { index: 2, type: "input", placeholder: "Find Grade..."},
+                { index: 3, type: "select", value: [
+                                                ["", "Semua"], 
+                                                ["Male", "Male"],
+                                                ["Female", "Female"],
+                                            ]
+                },
+                { index: 4, type: "input", placeholder: "Find Birth..."},
+                { index : 5, type: "select", group_by: { key : 5 , value : 5, default : ["", "Semua"] }}
+            ],
+            //theadFixed: true, 
+            order_by: [2, "DESC"],
+            action: [
+                {   cls     : "edit",
+                    url     : "edit/",
+                    text    : "_edit_",
+                    params  : [0, 1]
+                },
+                {
+                    cls     : "delete",
+                    url     : "Scripts/delete.php",
+                    text    : "_hapus_",
+                    isRemove: true,
+                    params  : [0],
+                    field   : 0,
+                    msg     : "Do you really want to delete this {i} : {m}?"
+                },
+                {
+                    cls     : "change",
+                    url     : "Scripts/change.php",
+                    text    : "_change_",
+                    params  : [0],
+                    changeData: 
+                    {
+                        changeIndex : [1, 2] // merubah data text pada index td
+                    }
+                }
+            ]
+        });*/
+    </script>
+</body>
+</html>

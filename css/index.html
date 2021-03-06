@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>403 Access Forbidden</title>
+    <link rel="stylesheet" href="../css/arjunane.min.css">
+    <link rel="stylesheet" href="../css/main.min.css">
+    <meta name="author" content="Arjunane || Dimas Awang Kusuma">
+    <link rel="icon" href="../icons/AR_D-new-2.ico" type="image/x-icon">
+</head>
+<body class="bg-black">
+    <div class="col-mx center">
+        <div class="big-font">
+            <span>4</span>
+            <div class="dis-ib img wd-10 img-circle">
+                <img src="../icons/garuda.png" alt="Arjunane">
+            </div>
+            <span>3</span>
+        </div>
+    </div>
+    <div class="col-mx center">
+        <div class="col-mx fs-14">
+            <span>The page or resource you were trying to reach is absolutely</span>
+        </div>
+        <div class="col-mx fs-14">
+            <span>forbidden for some reason</span>
+        </div>
+    </div>
+    <div class="col-mx center">
+        <span>You will be redirected in</span> <span id="time"></span>
+    </div>
+    <script>
+        var time    = document.getElementById("time"),
+            number  = 5;
+        time.innerHTML = number;
+        setInterval(function () {
+            number -= 1;
+            time.innerHTML = number;
+            if(number <= 0)
+            {
+                window.location.href = 'http://dimas-ak.github.io/';
+            }
+        }, 1000);
+    </script>
+</body>
+</html>

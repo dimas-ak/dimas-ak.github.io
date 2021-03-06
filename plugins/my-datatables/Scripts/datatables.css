@@ -1,0 +1,775 @@
+.arjunane-table {
+  background: #ecf0f1;
+  padding: 5px;
+  border: 1px solid #bdc3c7;
+  -webkit-border-radius: 10px;
+  -moz-border-radius: 10px;
+  -ms-border-radius: 10px;
+  -o-border-radius: 10px;
+  border-radius: 10px;
+}
+.arjunane-table *:after,
+.arjunane-table *:before,
+.arjunane-table * {
+  -webkit-box-sizing: border-box;
+  -moz-box-sizing: border-box;
+  -ms-box-sizing: border-box;
+  -o-box-sizing: border-box;
+  box-sizing: border-box;
+}
+.arjunane-table * {
+  font-family: Arial, Helvetica, sans-serif;
+  font-size: 10pt;
+  color: #2C3A47;
+  line-height: normal;
+}
+.arjunane-table ::selection {
+  background-color: #E13300;
+  color: white;
+}
+.arjunane-table ::-moz-selection {
+  background-color: #E13300;
+  color: white;
+}
+.arjunane-table ::-webkit-selection {
+  background-color: #E13300;
+  color: white;
+}
+.arjunane-table ::-o-selection {
+  background-color: #E13300;
+  color: white;
+}
+.arjunane-table ::-ms-selection {
+  background-color: #E13300;
+  color: white;
+}
+.arjunane-table .table-entry {
+  padding: 5px;
+  -webkit-border-radius: 5px;
+  -moz-border-radius: 5px;
+  -ms-border-radius: 5px;
+  -o-border-radius: 5px;
+  border-radius: 5px;
+}
+.arjunane-table .t-fixed {
+  position: fixed;
+  top: -100px;
+  left: 0;
+  right: 0;
+  opacity: 0;
+  z-index: -1;
+  margin: 0;
+}
+.arjunane-table .t-fixed.aktif {
+  opacity: 1;
+  top: 0;
+  z-index: 1500;
+}
+.arjunane-table .container-a-table.--scrolled {
+  width: 100%;
+  overflow-x: auto;
+  max-height: 550px;
+  margin:10px 0;
+}
+.arjunane-table .container-a-table.--scrolled .a-table {
+  min-width: 100%;
+}
+@media only screen and (max-width: 1142px) {
+  .arjunane-table .container-a-table.--scrolled .a-table {
+    min-width: 1200px;
+  }
+}
+.arjunane-table .--checkable {
+  margin: 20px 0;
+}
+.arjunane-table .--checkable input[type=checkbox] {
+  margin-left: 30px;
+  position: relative;
+  margin-right: 5px;
+}
+.arjunane-table .--checkable input[type=checkbox]:after, .arjunane-table .--checkable input[type=checkbox]:before {
+  content: "";
+  position: absolute;
+}
+.arjunane-table .--checkable input[type=checkbox]:before {
+  width: 10px;
+  height: 15px;
+  border-left: 2px solid #2C3A47;
+  border-bottom: 2px solid #2C3A47;
+  left: -15px;
+  bottom: 5px;
+}
+.arjunane-table .--checkable input[type=checkbox]:after {
+  width: 0;
+  height: 0;
+  top: -17px;
+  left: -20px;
+  border: 6px solid transparent;
+  border-bottom-color: #2C3A47;
+}
+.arjunane-table .--checkable .--all-check-data {
+  cursor: pointer;
+}
+.arjunane-table .--checkable span.--all-check-data:hover {
+  color: #3498db;
+  border-bottom: 1px solid #3498db;
+}
+.arjunane-table table {
+  border-collapse: collapse;
+  min-width: 1080px;
+  background: #FFFFFF;
+  margin-top: 10px;
+  width: 100%;
+}
+.arjunane-table table thead tr th:first-child,
+.arjunane-table table tbody tr td:first-child {
+  width: 50px;
+  text-align: center;
+}
+.arjunane-table table thead th {
+    position: sticky;
+    top: 0;
+    z-index: 100;
+    background: white;
+}
+.arjunane-table table thead tr.search th {
+    top: 28px;
+}
+.arjunane-table table thead th, .arjunane-table table tbody td {
+  padding: 7px 5px;
+  color: black;
+  vertical-align: middle;
+}
+.arjunane-table table thead th.action, .arjunane-table table tbody td.action {
+  text-align: center;
+  width: 250px;
+}
+.arjunane-table table thead th:not(:last-child), .arjunane-table table tbody td:not(:last-child) {
+  border-right: 1px solid #ecf0f1;
+}
+.arjunane-table table thead tr:not(.search) th {
+  font-weight: bold;
+  cursor: pointer;
+  border-bottom-width: 2px;
+  color: #235a81;
+  -webkit-box-shadow: 0 -10px 15px #ecf0f1 inset;
+  -moz-box-shadow: 0 -10px 15px #ecf0f1 inset;
+  -ms-box-shadow: 0 -10px 15px #ecf0f1 inset;
+  -o-box-shadow: 0 -10px 15px #ecf0f1 inset;
+  box-shadow: 0 -10px 15px #ecf0f1 inset;
+}
+.arjunane-table table thead tr:not(.search) th:hover {
+  -webkit-box-shadow: 0 10px 30px #ecf0f1 inset;
+  -moz-box-shadow: 0 10px 30px #ecf0f1 inset;
+  -ms-box-shadow: 0 10px 30px #ecf0f1 inset;
+  -o-box-shadow: 0 10px 30px #ecf0f1 inset;
+  box-shadow: 0 10px 30px #ecf0f1 inset;
+}
+.arjunane-table table thead tr:not(.search) th span {
+  display: block;
+  position: relative;
+  text-decoration: none;
+}
+.arjunane-table table thead tr:not(.search) th span:hover {
+  text-decoration: underline;
+}
+.arjunane-table table thead tr:not(.search) th span:after {
+  content: "";
+  position: absolute;
+  bottom: 0;
+  right: 2px;
+  margin: auto;
+  width: 0;
+  height: 0;
+  border: 5px solid transparent;
+}
+.arjunane-table table thead tr:not(.search) th.asc span:after {
+  border-top-color: #95a5a6;
+  top: 5px;
+}
+.arjunane-table table thead tr:not(.search) th.desc span:after {
+  border-bottom-color: #95a5a6;
+  bottom: 5px;
+}
+.arjunane-table table thead tr.search th {
+  padding: 3px;
+}
+.arjunane-table table thead tr.search input, .arjunane-table table thead tr.search select {
+  padding: 5px 0;
+  width: 100%;
+  text-indent: 10px;
+  border: 1px solid #95a5a6;
+  -webkit-border-radius: 5px;
+  -moz-border-radius: 5px;
+  -ms-border-radius: 5px;
+  -o-border-radius: 5px;
+  border-radius: 5px;
+  color: #2C3A47;
+  font-weight: normal;
+}
+.arjunane-table table tbody tr:nth-child(even) td {
+  background: #DFDFDF;
+}
+.arjunane-table table tbody tr:nth-child(even) td.hover:not(.action) {
+  background: #ced6df;
+  -webkit-box-shadow: 0 -10px 20px #b6c6d7 inset;
+  -moz-box-shadow: 0 -10px 20px #b6c6d7 inset;
+  -ms-box-shadow: 0 -10px 20px #b6c6d7 inset;
+  -o-box-shadow: 0 -10px 20px #b6c6d7 inset;
+  box-shadow: 0 -10px 20px #b6c6d7 inset;
+}
+.arjunane-table table tbody tr:hover td {
+  background: #ced6df;
+}
+.arjunane-table table tbody td.hover:not(.action) {
+  background: #ced6df;
+  -webkit-box-shadow: 0 -10px 20px #b6c6d7 inset;
+  -moz-box-shadow: 0 -10px 20px #b6c6d7 inset;
+  -ms-box-shadow: 0 -10px 20px #b6c6d7 inset;
+  -o-box-shadow: 0 -10px 20px #b6c6d7 inset;
+  box-shadow: 0 -10px 20px #b6c6d7 inset;
+}
+.arjunane-table .conf {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background: rgba(0, 0, 0, 0.1);
+  z-index: -1;
+  opacity: 0;
+  -webkit-transition: 0.5s;
+  -moz-transition: 0.5s;
+  -ms-transition: 0.5s;
+  -o-transition: 0.5s;
+  transition: 0.5s;
+}
+.arjunane-table .conf.aktif {
+  opacity: 1;
+  z-index: 1550;
+}
+.arjunane-table .conf .inner-conf {
+  position: absolute;
+  background: #FFFFFF;
+  width: 300px;
+  padding: 3px;
+  -webkit-border-radius: 5px;
+  -moz-border-radius: 5px;
+  -ms-border-radius: 5px;
+  -o-border-radius: 5px;
+  border-radius: 5px;
+  overflow: hidden;
+  display: none;
+}
+.arjunane-table .conf .inner-conf .conf-head {
+  background: #ecf0f1;
+  padding: 10px;
+  color: black;
+  font-weight: bold;
+  position: relative;
+  -webkit-box-shadow: 0 -10px 30px #bdc3c7 inset;
+  -moz-box-shadow: 0 -10px 30px #bdc3c7 inset;
+  -ms-box-shadow: 0 -10px 30px #bdc3c7 inset;
+  -o-box-shadow: 0 -10px 30px #bdc3c7 inset;
+  box-shadow: 0 -10px 30px #bdc3c7 inset;
+}
+.arjunane-table .conf .inner-conf .conf-head .close-conf {
+  position: absolute;
+  top: 15%;
+  right: 15px;
+  background: #e6e6e6;
+  width: 20px;
+  height: 20px;
+  border: 1px solid #2C3A47;
+  cursor: pointer;
+  color: #2C3A47;
+}
+.arjunane-table .conf .inner-conf .conf-head .close-conf:after {
+  content: "X";
+  position: absolute;
+  width: 0;
+  height: 0;
+  left: 25%;
+  top: 15%;
+  font-size: 12pt;
+}
+.arjunane-table .conf .inner-conf .conf-head .close-conf:hover {
+  color: black;
+  background: #ecf0f1;
+}
+.arjunane-table .conf .inner-conf .conf-info {
+  padding: 10px 10px 20px 10px;
+  border-bottom: 1px solid #95a5a6;
+  max-height: 300px;
+  overflow: auto;
+  width: 100%;
+}
+.arjunane-table .conf .inner-conf .conf-button {
+  margin: 10px 0;
+  text-align: right;
+}
+.arjunane-table .conf .inner-conf .conf-button button {
+  margin: 0 5px;
+  padding: 5px 15px;
+  color: #2C3A47;
+  font-size: 9pt;
+}
+.arjunane-table .conf .--error-info {
+  width: 400px;
+  position: absolute;
+  background: #e74c3c;
+  height: 400px;
+  margin: auto;
+  left: 0;
+  top: 0;
+  bottom: 0;
+  right: 0;
+  margin: auto;
+  display: none;
+}
+.arjunane-table .conf .--error-info > div {
+  padding: 15px;
+}
+.arjunane-table .conf .--error-info > div:nth-child(1) {
+  font-size: 20pt;
+  border-bottom: 2px groove #ff3b41;
+}
+.arjunane-table .conf .--error-info > div:nth-child(1), .arjunane-table .conf .--error-info > div:nth-child(2) {
+  color: #FFFFFF;
+}
+.arjunane-table .conf .--error-info > div:nth-child(2) {
+  height: 283px;
+  overflow: auto;
+}
+.arjunane-table .conf .--error-info > div:nth-child(3) {
+  padding: 10px;
+  text-align: right;
+  background: #FFFFFF;
+}
+.arjunane-table .conf .--error-info > div:nth-child(3) .close-confirmation {
+  vertical-align: middle;
+  background: #c0392b;
+  color: #FFFFFF;
+  padding: 10px;
+  width: 100px;
+  border: 0px;
+  -webkit-border-radius: 5px;
+  -moz-border-radius: 5px;
+  -ms-border-radius: 5px;
+  -o-border-radius: 5px;
+  border-radius: 5px;
+}
+.arjunane-table .conf .inner-conf.aktif, .arjunane-table .conf .--error-info.aktif {
+  display: block;
+}
+.arjunane-table .--pagination {
+  margin: 10px 0;
+  text-align: center;
+  display: block;
+}
+.arjunane-table .--pagination .i-page {
+  margin-bottom: 10px;
+  background: #ebf8a4;
+  padding: 10px;
+  -webkit-border-radius: 5px;
+  -moz-border-radius: 5px;
+  -ms-border-radius: 5px;
+  -o-border-radius: 5px;
+  border-radius: 5px;
+  color: black;
+  border: 1px solid #a2d246;
+  text-align: left;
+  padding-left: 40px;
+  position: relative;
+  cursor: default;
+}
+.arjunane-table .--pagination .i-page:after, .arjunane-table .--pagination .i-page:before {
+  position: absolute;
+  content: "";
+  background: #82ca77;
+  border: 1px solid transparent;
+}
+.arjunane-table .--pagination .i-page:after {
+  left: 12px;
+  width: 5px;
+  height: 2px;
+  border-bottom-color: #3a7d33;
+  -webkit-transform: rotate(45deg);
+  -moz-transform: rotate(45deg);
+  -ms-transform: rotate(45deg);
+  -o-transform: rotate(45deg);
+  transform: rotate(45deg);
+  top: 18px;
+}
+.arjunane-table .--pagination .i-page:before {
+  width: 14px;
+  height: 2px;
+  -webkit-transform: rotate(-45deg);
+  -moz-transform: rotate(-45deg);
+  -ms-transform: rotate(-45deg);
+  -o-transform: rotate(-45deg);
+  transform: rotate(-45deg);
+  left: 13px;
+  top: 15px;
+  border-left-color: #3a7d33;
+  border-bottom-color: #3a7d33;
+}
+.arjunane-table .--pagination .--page {
+  padding: 10px;
+  -webkit-border-radius: 5px;
+  -moz-border-radius: 5px;
+  -ms-border-radius: 5px;
+  -o-border-radius: 5px;
+  border-radius: 5px;
+  background: #FFFFFF;
+  color: #2C3A47;
+  border: 1px solid #bdc3c7;
+  display: inline-block;
+  margin: 0 5px;
+}
+.arjunane-table .--pagination .--page:hover {
+  background: #00a8ff;
+  color: #FFFFFF;
+  cursor: pointer;
+}
+.arjunane-table .--pagination .--page.aktif {
+  background: #3498db;
+  color: #FFFFFF;
+  cursor: not-allowed;
+}
+.arjunane-table .--pagination .--page.n-a {
+  cursor: not-allowed;
+}
+.arjunane-table .t-edit,
+.arjunane-table .t-delete,
+.arjunane-table .t-add,
+.arjunane-table .t-download,
+.arjunane-table .t-search,
+.arjunane-table .t-change,
+.arjunane-table .t-message,
+.arjunane-table .t-reject,
+.arjunane-table .t-accept,
+.arjunane-table .t-detail {
+  position: relative;
+  padding: 5px 5px 5px 30px;
+  font-size: 9pt;
+  color: #FFFFFF;
+  text-decoration: none !important;
+  -webkit-border-radius: 5px;
+  -moz-border-radius: 5px;
+  -ms-border-radius: 5px;
+  -o-border-radius: 5px;
+  border-radius: 5px;
+  margin: 2.5px;
+  vertical-align: middle;
+  display: inline-block;
+}
+.arjunane-table .t-edit:after, .arjunane-table .t-edit:before,
+.arjunane-table .t-delete:after,
+.arjunane-table .t-delete:before,
+.arjunane-table .t-add:after,
+.arjunane-table .t-add:before,
+.arjunane-table .t-download:after,
+.arjunane-table .t-download:before,
+.arjunane-table .t-search:after,
+.arjunane-table .t-search:before,
+.arjunane-table .t-change:after,
+.arjunane-table .t-change:before,
+.arjunane-table .t-message:after,
+.arjunane-table .t-message:before,
+.arjunane-table .t-reject:after,
+.arjunane-table .t-reject:before,
+.arjunane-table .t-accept:after,
+.arjunane-table .t-accept:before,
+.arjunane-table .t-detail:after,
+.arjunane-table .t-detail:before {
+  content: "";
+  position: absolute;
+  margin: auto;
+}
+.arjunane-table .t-edit {
+  background: #3498db;
+  border: 1px solid #2980b9;
+}
+.arjunane-table .t-edit:after {
+  height: 10px;
+  width: 4px;
+  background: #FFFFFF;
+  left: 15px;
+  top: 5px;
+  -webkit-transform: rotate(25deg);
+  -moz-transform: rotate(25deg);
+  -ms-transform: rotate(25deg);
+  -o-transform: rotate(25deg);
+  transform: rotate(25deg);
+}
+.arjunane-table .t-edit:before {
+  width: 0;
+  height: 0;
+  border: 3px solid transparent;
+  border-top-color: #FFFFFF;
+  left: 10px;
+  bottom: 3px;
+  -webkit-transform: rotate(25deg);
+  -moz-transform: rotate(25deg);
+  -ms-transform: rotate(25deg);
+  -o-transform: rotate(25deg);
+  transform: rotate(25deg);
+}
+.arjunane-table .t-edit:hover {
+  background: #2980b9;
+}
+.arjunane-table .t-search {
+  background: #3498db;
+  border: 1px solid #2980b9;
+}
+.arjunane-table .t-search:after {
+  width: 7px;
+  height: 7px;
+  border: 1px solid #FFFFFF;
+  left: 15px;
+  top: 5px;
+  -webkit-border-radius: 100%;
+  -moz-border-radius: 100%;
+  -ms-border-radius: 100%;
+  -o-border-radius: 100%;
+  border-radius: 100%;
+}
+.arjunane-table .t-search:before {
+  width: 7px;
+  height: 2px;
+  background: #FFFFFF;
+  left: 9px;
+  bottom: 9px;
+  -webkit-transform: rotate(-45deg);
+  -moz-transform: rotate(-45deg);
+  -ms-transform: rotate(-45deg);
+  -o-transform: rotate(-45deg);
+  transform: rotate(-45deg);
+}
+.arjunane-table .t-search:hover {
+  background: #2980b9;
+}
+.arjunane-table .t-change {
+  background: #3498db;
+  border: 1px solid #2980b9;
+}
+.arjunane-table .t-change:before {
+  width: 10px;
+  height: 10px;
+  border: 2px solid #FFFFFF;
+  left: 8px;
+  top: 7px;
+  -webkit-border-radius: 100%;
+  -moz-border-radius: 100%;
+  -ms-border-radius: 100%;
+  -o-border-radius: 100%;
+  border-radius: 100%;
+}
+.arjunane-table .t-change:after {
+  width: 17px;
+  height: 3px;
+  background: #3498db;
+  left: 6px;
+  bottom: 12px;
+  -webkit-transform: rotate(-45deg);
+  -moz-transform: rotate(-45deg);
+  -ms-transform: rotate(-45deg);
+  -o-transform: rotate(-45deg);
+  transform: rotate(-45deg);
+}
+.arjunane-table .t-change:hover, .arjunane-table .t-change:hover:after {
+  background: #2980b9;
+}
+.arjunane-table .t-delete {
+  background: #e84118;
+  border: 1px solid #c0392b;
+}
+.arjunane-table .t-delete:after {
+  width: 12px;
+  height: 2px;
+  background: #FFFFFF;
+  left: 10px;
+  top: 6px;
+}
+.arjunane-table .t-delete:before {
+  background: #FFFFFF;
+  width: 8px;
+  height: 10px;
+  left: 12px;
+  top: 9px;
+}
+.arjunane-table .t-delete:hover {
+  background: #c0392b;
+}
+.arjunane-table .t-add {
+  background: #3a7d33;
+  border: 1px solid #a2d246;
+}
+.arjunane-table .t-add:after {
+  width: 13px;
+  height: 13px;
+  color: #3a7d33;
+  content: "+";
+  left: 9px;
+  top: 5px;
+  font-weight: bold;
+  font-size: 12pt;
+  line-height: 13px;
+  text-align: center;
+}
+.arjunane-table .t-add:before {
+  background: #FFFFFF;
+  width: 13px;
+  height: 13px;
+  left: 9px;
+  top: 5px;
+  -webkit-border-radius: 2px;
+  -moz-border-radius: 2px;
+  -ms-border-radius: 2px;
+  -o-border-radius: 2px;
+  border-radius: 2px;
+}
+.arjunane-table .t-add:hover {
+  background: #295824;
+}
+.arjunane-table .t-detail {
+  background: #00a8ff;
+  border: 1px solid #00a8ff;
+}
+.arjunane-table .t-detail:after {
+  width: 13px;
+  height: 13px;
+  color: #3498db;
+  content: "!";
+  left: 9px;
+  top: 5px;
+  font-weight: bold;
+  font-size: 11pt;
+  text-align: center;
+  line-height: 14px;
+}
+.arjunane-table .t-detail:before {
+  background: #FFFFFF;
+  width: 13px;
+  height: 13px;
+  left: 9px;
+  top: 5px;
+  -webkit-border-radius: 2px;
+  -moz-border-radius: 2px;
+  -ms-border-radius: 2px;
+  -o-border-radius: 2px;
+  border-radius: 2px;
+}
+.arjunane-table .t-detail:hover {
+  background: #3498db;
+}
+.arjunane-table .t-download {
+  background: #9b59b6;
+  border: 1px solid #8e44ad;
+}
+.arjunane-table .t-download:after {
+  height: 10px;
+  width: 4px;
+  background: #FFFFFF;
+  left: 13px;
+  top: 5px;
+}
+.arjunane-table .t-download:before {
+  width: 0;
+  height: 0;
+  border: 6px solid transparent;
+  border-top-color: #FFFFFF;
+  left: 9px;
+  bottom: -2px;
+}
+.arjunane-table .t-download:hover {
+  background: #8e44ad;
+}
+.arjunane-table .t-message {
+  background: #34495e;
+  border: 1px solid #2c3e50;
+}
+.arjunane-table .t-message:before {
+  height: 13px;
+  width: 15px;
+  background: #FFFFFF;
+  left: 10px;
+  top: 5px;
+  -webkit-border-radius: 2px;
+  -moz-border-radius: 2px;
+  -ms-border-radius: 2px;
+  -o-border-radius: 2px;
+  border-radius: 2px;
+}
+.arjunane-table .t-message:after {
+  width: 5px;
+  height: 5px;
+  border: 1px solid transparent;
+  -webkit-transform: rotate(45deg);
+  -moz-transform: rotate(45deg);
+  -ms-transform: rotate(45deg);
+  -o-transform: rotate(45deg);
+  transform: rotate(45deg);
+  border-right-color: #2c3e50;
+  border-bottom-color: #2c3e50;
+  top: 5px;
+  left: 15px;
+}
+.arjunane-table .t-message:hover {
+  background: #2c3e50;
+}
+.arjunane-table .t-reject {
+  background: #e84118;
+  border: 1px solid #c0392b;
+}
+.arjunane-table .t-reject:after {
+  width: 15px;
+  height: 15px;
+  border: 2px solid #FFFFFF;
+  -webkit-border-radius: 100%;
+  -moz-border-radius: 100%;
+  -ms-border-radius: 100%;
+  -o-border-radius: 100%;
+  border-radius: 100%;
+  left: 7px;
+  top: 0;
+  bottom: 0;
+  margin: auto;
+}
+.arjunane-table .t-reject:before {
+  background: #FFFFFF;
+  width: 15px;
+  height: 2px;
+  left: 7px;
+  top: 11px;
+  -webkit-transform: rotate(-45deg);
+  -moz-transform: rotate(-45deg);
+  -ms-transform: rotate(-45deg);
+  -o-transform: rotate(-45deg);
+  transform: rotate(-45deg);
+}
+.arjunane-table .t-reject:hover {
+  background: #c0392b;
+}
+.arjunane-table .t-accept {
+  background: #2ecc71;
+  border: 1px solid #2ecc71;
+}
+.arjunane-table .t-accept:after {
+  border: 2px solid transparent;
+  width: 13px;
+  height: 6px;
+  left: 10px;
+  top: 6px;
+  -webkit-transform: rotate(-45deg);
+  -moz-transform: rotate(-45deg);
+  -ms-transform: rotate(-45deg);
+  -o-transform: rotate(-45deg);
+  transform: rotate(-45deg);
+  border-bottom-color: #FFFFFF;
+  border-left-color: #FFFFFF;
+}
+.arjunane-table .t-accept:hover {
+  background: #27ae60;
+}
