@@ -1,0 +1,56 @@
+/*
+To change this license header, choose License Headers in Project Properties.
+To change this template file, choose Tools | Templates
+and open the template in the editor.
+*/
+/* 
+    Created on : UNKNOWN
+    Author     : DIMAS AWANG KUSUMA
+*/
+
+@import url("https://fonts.googleapis.com/css?family=Roboto");
+*{font-family: "Roboto",serif;-webkit-box-sizing: border-box;-moz-box-sizing: border-box;-o-box-sizing: border-box;-khtml-box-sizing: border-box;resize: none;letter-spacing: 0.2px;box-sizing: border-box;}
+html,body,section{margin:0;padding:0;height:100%;}
+
+
+.kalender{position:absolute;z-index: 10000;width:300px;margin:auto;}
+.kalender .title{width:100%;background:#e74c3c;padding:10px;text-align: center;font-weight:bold;color:#FFF;position:relative;border-radius: 5px 5px 0 0;border-top:1px solid #ecf0f1;border-left: 1px solid #ecf0f1;border-right: 1px solid #ecf0f1;cursor: default;}
+.kalender .title .month{padding:5px;display:inline-block;padding-right:30px;position:relative;margin-right:5px;width:120px;}
+.kalender .title .year{padding:5px;display:inline-block;padding-right:30px;position:relative;}
+.kalender .title .month:after, .kalender .title .year:after{position:absolute;right:7.5px;width:0;height:0;margin:auto;bottom:0;top:0;border-top:5px solid #FFF;border-left: 5px solid transparent;border-right: 5px solid transparent;content:''}
+.kalender .title .month:hover, .kalender .title .year:hover{background:#c0392b}
+.kalender .title .month.aktif, .kalender .title .year.aktif{background:#c0392b}
+.kalender .title .sub-content{width:150px;height:0;position:absolute;overflow-y:auto;background:#34495e;color:#FFF;z-index: 1;}
+.kalender .title .sub-content .sc{width:100%;padding:5px;font-weight:normal;}
+.kalender .title .sub-content .sc.aktif{background:#7f8c8d;font-weight:bold;}
+.kalender .title .sub-content .sc:hover{background:#2c3e50}
+.kalender .title .sub-content.aktif{height:200px;}
+.kalender .title .left, .kalender .title .right{position:absolute;margin:auto;width:20px;height:20px;border-radius:100%;-webkit-border-radius:100%;background:#FFF;}
+.kalender .title .left:hover, .kalender .title .right:hover{background:#bdc3c7;}
+.kalender .title .left{left:10px;top:0;bottom:0;}
+.kalender .title .right{right:10px;top:0;bottom:0;}
+.kalender .title .left, .kalender .title .right{cursor: pointer;}
+.kalender .title .left:after{transform:rotate(45deg);-webkit-ransform:rotate(45deg);-moz-ransform:rotate(45deg);-ms-ransform:rotate(45deg);-o-ransform:rotate(45deg);position:absolute;width:10px;height:10px;border-left:2px solid #e74c3c;border-bottom:2px solid #e74c3c;content:'';top:0;bottom:0;left:5px;right:0;margin:auto;}
+.kalender .title .right:after{transform:rotate(45deg);-webkit-ransform:rotate(45deg);-moz-ransform:rotate(45deg);-ms-ransform:rotate(45deg);-o-ransform:rotate(45deg);position:absolute;width:10px;height:10px;border-top:2px solid #e74c3c;border-right:2px solid #e74c3c;content:'';top:0;bottom:0;right:5px;left:0;margin:auto;}
+.kalender .body{width:100%;background:#ecf0f1;overflow: hidden;}
+.kalender .body .day{width:100%;border-right:1px solid #ecf0f1;border-left:1px solid #ecf0f1;font-size:0;overflow:hidden;}
+.kalender .body .day .date{width:42.5px;padding: 5px;text-align: center;display:inline-block;cursor: default;font-size:10pt;color:#2c3e50}
+.kalender .body .day .date.week{background:#e74c3c;color:#FFF;}
+.kalender .body .day .date:hover{background:#bdc3c7;}
+.kalender .body .day .date.week:hover{background:#c0392b}
+.kalender .body .day .d{width:41px;height:30px;margin:.5px;border: 1px solid transparent;text-align: right;background:#ecf0f1;color:#2c3e50;font-size:11pt;float:left;padding:2px;cursor: default;}
+.kalender .body .day .d.today{position:relative;}
+.kalender .body .day .d.today:after{border-radius: 100%;width:22px;height:22px;border:1px solid #c0392b;position:absolute;right:-1px;top:0;margin:auto;content:''}
+.kalender .body .day .d.true:hover{background:#3498db;color:#FFF;}
+.kalender .body .day .d.true{border:1px solid #34495e;}
+.kalender .body .day .d.true.week{color:#e74c3c}
+.kalender .body .day .d.true.week:hover{color:#FFF}
+.kalender .body .day .d.true.aktif{background:#34495e;color:#FFF;}
+.kalender .body .day .d.true.aktif:hover{background:#2c3e50}
+.kalender .body .day .d.true.aktif.today:after{border-color: #FFF;}
+.kalender .body .time{width:100%;padding:5px;background:#34495e;color:#FFF;margin-top:5px;cursor: default;}
+.kalender .body .time .value{width:100%;margin:5px 0;}
+.kalender .body .time .input{width:100%;}
+.kalender .body .time .input span{font-size:11pt;display:inline-block;width:50px;}
+.kalender .body .time .input input{-webkit-appearance: none;-moz-appearance: none;background:#bdc3c7;}
+.kalender .body .time .input input:hover{background:#ecf0f1}

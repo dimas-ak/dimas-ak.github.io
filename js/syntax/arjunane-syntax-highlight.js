@@ -40,6 +40,7 @@
         this.selector = null;
         this.version  = "v 1.0.0";
         this.developed_by = "Dimas Awang Kusuma || Arjunane Syntax";
+        this.name = "Arjunane Syntax";
     }
 
     arjunaneSyntax.prototype.init =  function (selector, language) 
@@ -78,7 +79,7 @@
             var style = window.getComputedStyle(ini, null).getPropertyValue('font-size');
             var fontSize = parseFloat(style); 
             
-            ini.innerHTML = setHTML(html, this.developed_by, this.version, ini.innerHTML, fontSize);
+            ini.innerHTML = setHTML(html, this.name, this.version, ini.innerHTML, fontSize);
         }
     }
 
@@ -319,7 +320,7 @@
     function regexDart(text) 
     {
         var regexGreen      = /([^\s]+\w)(?=\=)|\b(?!(?:\b(for|while|if)\b))[\w]+?(?=\(|<)/g,
-            regexRed        = /(<[a-z]+)|(<\/[a-z]+)|(&&)|(\|\|)|(\!)|(<)|(>)|(\+)|(\+\+)|(-)|(=)|(\*)|\b(\/)|(:)|(\?)|\b(if|else|for|new|return|typeof|break|default|public|class|extends|int|string|final|static|import|throw|assert|try|catch|factory|await)\b|\b(is)\b/g,
+            regexRed        = /(<[a-z]+)|(<\/[a-z]+)|(&&)|(\|\|)|(\!)|(<)|(>)|(\+)|(\+\+)|(-)|(=)|(\*)|\b(\/)|(:)|(\?)|\b(if|async|else|for|new|return|typeof|break|default|public|class|extends|int|string|final|static|import|throw|assert|try|catch|factory|await)\b|\b(is)\b/g,
             regexYellow     = /``|`[\s\S\w]+?`|""|"[\s\S\w]+?"|''|'[\s\S\w]+?'/g,
             regexBlack      = /(?:[a-z]+:)?\/\/.*|(\/\*)[\s\S\W\w\d\D]+?(\*\/)/g,
             regexPurple     = /\b(?!\W)[\d.]+|\b((false)|(true)|(null))\b/g,
@@ -390,7 +391,6 @@
 
         if(matchGreen !== null)
         {
-            console.log(matchGreen)
             setMatch(text, matchGreen, tmpMatchs, indexTmpMatchs, 'green', function (data) {
                 text = data.text;
                 tmpMatchs = data.tmpMatchs;
@@ -492,8 +492,6 @@
 
         if(matchBlue !== null)
         {
-            console.log(text)
-            console.log(matchBlue)
             setMatch(text, matchBlue, tmpMatchs, indexTmpMatchs, 'blue', function (data) {
                 text = data.text;
                 tmpMatchs = data.tmpMatchs;
