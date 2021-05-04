@@ -320,12 +320,12 @@
     function regexDart(text) 
     {
         var regexGreen      = /([^\s]+\w)(?=\=)|\b(?!(?:\b(for|while|if)\b))[\w]+?(?=\(|<)/g,
-            regexRed        = /(<[a-z]+)|(<\/[a-z]+)|(&&)|(\|\|)|(\!)|(<)|(>)|(\+)|(\+\+)|(-)|(=)|(\*)|\b(\/)|(:)|(\?)|\b(if|async|else|for|new|return|typeof|break|default|public|class|extends|int|string|final|static|import|throw|assert|try|catch|factory|await)\b|\b(is)\b/g,
+            regexRed        = /(<[a-z]+)|(<\/[a-z]+)|(&&)|(\|\|)|(\!)|(<)|(>)|(\+)|(\+\+)|(-)|(=)|(\*)|\b(\/)|(:)|(\?)|\b(if|async|else|for|new|return|typeof|break|default|public|class|extends|string|final|static|import|throw|assert|try|catch|factory|await)\b|\b(is)\b/g,
             regexYellow     = /``|`[\s\S\w]+?`|""|"[\s\S\w]+?"|''|'[\s\S\w]+?'/g,
             regexBlack      = /(?:[a-z]+:)?\/\/.*|(\/\*)[\s\S\W\w\d\D]+?(\*\/)/g,
             regexPurple     = /\b(?!\W)[\d.]+|\b((false)|(true)|(null))\b/g,
             regexOrange     = /\b(this|super)\b/g,
-            regexBlue       = /\b([A-Z][a-z]*)+?(?=\()|\b([A-Z][a-z]*)+\b|\b[_]([A-Z][a-z]*)+\b|void|bool|double|dynamic|var|(function|function\()\b|(\@override)|(\@protected)|(\@mustCallSuper)|(\@required)/g;
+            regexBlue       = /\b([A-Z][a-z]*)+?(?=\()|\b([A-Z][a-z]*)+\b|\b[_]([A-Z][a-z]*)+\b|void|bool|double|dynamic|var|int|(function|function\()\b|(\@override)|(\@protected)|(\@mustCallSuper)|(\@required)/g;
 
         var matchGreen      = text.match(regexGreen),
             matchRed        = text.match(regexRed),
